@@ -6,6 +6,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import User from './components/User';
 import Manufacturer from './components/Manufacturer';
+import SetDoctorProfile from './components/SetDoctorProfile';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route exact path='/user' element={<User  />} />
         <Route exact path='/manufacturer' element={<Manufacturer  />} />
         <Route exact path='/login' element={<Login />} />
+        <Route exact path='/set-doctor-profile' element={<SetDoctorProfile/>}/>
       </Routes>
     </>
   );
