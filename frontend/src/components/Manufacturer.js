@@ -76,7 +76,7 @@ export default function Manufacturer() {
     if (qrCode) {
       try {
 
-        const qrCodeUrl = await qrCode.toDataURL(`Product ID: ${productID}`);
+        const qrCodeUrl = await qrCode.toDataURL(productID);
         const qrCodePng = await convertQRCodeToPNG(qrCodeUrl);
         const formData = new FormData();
         formData.append('file', qrCodePng);
@@ -94,7 +94,7 @@ export default function Manufacturer() {
         const ImgHash = data.IpfsHash;
         console.log(ImgHash);
         const transaction = await contract.uploadProduct(prdName, prdName, batchNo, ImgHash);
-
+        
         await transaction.wait();
         alert("Product Added Successfully");
         setProductID(generateUniqueID());

@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     const [address, setAddress] = useState(null);
     const connectWallet = async () => {
         // const contractAddress = "0x349807b7F2110d4b478A36428eA97789943E372c"; //Goerli
-        const contractAddress = "0x13D66C01f5a8c7E776e72D848e72c5e8171F4a09";   //Ganache
+        const contractAddress = "0x62064443E13287Ae9D077Be407a38a009BE684D3";   //Ganache
 
         const contractABI = abi.abi;
         try {
