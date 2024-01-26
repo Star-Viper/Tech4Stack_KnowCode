@@ -18,6 +18,7 @@ export default function User() {
 
   useEffect(() => {
     const onScanSuccess = async (decodedText, decodedResult) => {
+      setRes(decodedText);
       isFake();
     };
     const scannerId = 'qrScanner';
@@ -35,12 +36,7 @@ export default function User() {
     try {
       const [real, productInfo] = await contract.isReal(res);
       console.log("Product info: ", productInfo);
-
-      const expirationTimestamp = productInfo.expirationDate.timestamp;
-      const manufacturingTimestamp = productInfo.manufacturingDate.timestamp;
-
-      console.log("Expiration Timestamp: ", expirationTimestamp);
-      console.log("Manufacturing Timestamp: ", manufacturingTimestamp);
+      console.log("Product info: ", productInfo.expirationTimestamp);
 
       if (real) {
         alert("Product is Real");
@@ -48,8 +44,8 @@ export default function User() {
           prd_id: productInfo[0],
           prd_name: productInfo[1],
           batch_no: productInfo[2],
-          expirationDate: new Date(productInfo.expirationDate.timestamp * 1000).toLocaleString(),
-          manufacturingDate: new Date(productInfo.manufacturingDate.timestamp * 1000).toLocaleString()
+          expirationDate: new Date(productInfo.expirationDate * 1000).toLocaleString(),
+          manufacturingDate: new Date(productInfo.manufacturingDate * 1000).toLocaleString()
         });
       } else {
         alert("Product is Fake");
@@ -59,6 +55,7 @@ export default function User() {
       alert("An error occurred during login. Please try again.");
     }
   };
+
 
   return (
     <>
@@ -71,11 +68,14 @@ export default function User() {
         <h4 className='text-center'>OR</h4>
         <div style={{ width: '400px', marginInline: "auto" }} ref={scannerRef}></div>
         <div className='mt-5'>
-        {Result.prd_id}
-        {Result.prd_name}
-        {Result.batch_no}
-        {Result.expirationDate}
-        {Result.manufacturingDate}
+         
+          <ul class="list-group">
+            <li class="list-group-item text-center"> {Result.prd_id}</li>
+            <li class="list-group-item text-center">{Result.prd_name}</li>
+            <li class="list-group-item text-center">{Result.batch_no}</li>
+            <li class="list-group-item text-center">{Result.expirationDate}</li>
+            <li class="list-group-item text-center">{Result.manufacturingDate}</li>
+          </ul>
         </div>
       </div>
 
