@@ -8,6 +8,8 @@ import User from './components/User';
 import Manufacturer from './components/Manufacturer';
 import Setdoctor from './components/Setdoctor';
 import ShowDoctor from './components/ShowDoctor';
+import Setpatient from './components/Setpatient';
+import ShowPatient from './components/Showpatient';
 
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/set-doctor' element={<Setdoctor />} />
         <Route exact path='/showdoctor' element={<ShowDoctor />} />
+        <Route exact path='/set-patient' element={<Setpatient />} />
+        <Route exact path='/showpatient' element={<ShowPatient />} />
       </Routes>
     </>
   );
