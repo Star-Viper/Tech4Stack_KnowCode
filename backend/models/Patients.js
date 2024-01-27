@@ -49,7 +49,6 @@ const patientSchema = new Schema({
     },
     report: {
         type: String,
-        required: true,
     },
     date: {
         type: Date,

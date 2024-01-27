@@ -3,45 +3,38 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../store/auth';
 import Navbar from './Navbar';
 
-const Setpatient = () => {
+const Editdoctor = () => {
     const navigate = useNavigate();
     const { storeTokenInLS } = useAuth();
 
-
     const [address, setAddress] = useState('');
+    const [license, setLicense] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [gender, setGender] = useState('');
     const [dob, setDob] = useState('');
-    const [height, setHeight] = useState();
-    const [weight, setWeight] = useState();
-    const [houseaddr, setHouseAddr] = useState('');
-    const [bloodgroup, setBloodGroup] = useState('');
-    const [allergies, setAllergies] = useState('');
-    const [medication, setMedication] = useState('');
-    const [report, setReport] = useState('');
+    const [qualification, setQualification] = useState('');
+    const [major, setMajor] = useState('');
+    const [specialization, setSpecialization] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch("http://localhost:8000/setpatient", {
-                method: "post",
+            const response = await fetch("http://localhost:8000/editdoctor", {
+                method: "put",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
+                    license,
                     name,
                     phone,
                     gender,
                     dob,
-                    height,
-                    weight,
-                    houseaddr,
-                    bloodgroup,
-                    allergies,
-                    medication,
+                    qualification,
+                    major,
+                    specialization,
                     address,
-                    report
                 })
             });
 
@@ -49,8 +42,8 @@ const Setpatient = () => {
                 // const res_data = await response.json();
                 // console.log("response from server ", res_data);
                 // storeTokenInLS(res_data.token);
-                alert("Profile Stored Successfully");
-                navigate('/showpatient');
+                alert("Profile Updated Successfully");
+                navigate('/showdoctor');
             } else {
                 return alert("Invalid Credentials!!!");
             }
@@ -65,8 +58,11 @@ const Setpatient = () => {
             <div className="container">
                 <div className="form-body">
                     <form onSubmit={handleSubmit}>
-                        <label>Address:</label>
-                        <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+                        <label htmlFor="address">Address:</label>
+                        <input type="text" id="address" name="address" value={address} onChange={(e) => setAddress(e.target.value)} />
+
+                        <label>License:</label>
+                        <input type="text" value={license} onChange={(e) => setLicense(e.target.value)} />
 
                         <label>Name:</label>
                         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -80,28 +76,16 @@ const Setpatient = () => {
                         <label>DOB:</label>
                         <input type="text" value={dob} onChange={(e) => setDob(e.target.value)} />
 
-                        <label>Height:</label>
-                        <input type="text" value={height} onChange={(e) => setHeight(e.target.value)} />
+                        <label>Qualification:</label>
+                        <input type="text" value={qualification} onChange={(e) => setQualification(e.target.value)} />
 
-                        <label>Weight:</label>
-                        <input type="text" value={weight} onChange={(e) => setWeight(e.target.value)} />
+                        <label>Major:</label>
+                        <input type="text" value={major} onChange={(e) => setMajor(e.target.value)} />
 
-                        <label>House Address:</label>
-                        <input type="text" value={houseaddr} onChange={(e) => setHouseAddr(e.target.value)} />
+                        <label>Specialization:</label>
+                        <input type="text" value={specialization} onChange={(e) => setSpecialization(e.target.value)} />
 
-                        <label>Blood Group:</label>
-                        <input type="text" value={bloodgroup} onChange={(e) => setBloodGroup(e.target.value)} />
-
-                        <label>Allergies:</label>
-                        <input type="text" value={allergies} onChange={(e) => setAllergies(e.target.value)} />
-
-                        <label>Medication:</label>
-                        <input type="text" value={medication} onChange={(e) => setMedication(e.target.value)} />
-
-                        <label>Report:</label>
-                        <input type="text" value={report} onChange={(e) => setReport(e.target.value)} />
-
-                        <button type='submit'>Set Patient Details</button>
+                        <button type="submit">Set Doctor Details</button>
                     </form>
                 </div>
             </div>
@@ -162,4 +146,4 @@ const Setpatient = () => {
     );
 };
 
-export default Setpatient;
+export default Editdoctor;

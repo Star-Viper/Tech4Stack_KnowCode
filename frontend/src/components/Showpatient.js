@@ -40,7 +40,7 @@ const ShowPatient = () => {
                         <h3>{ele.address}</h3>
                     </div>
                 ))}
-                {patients.length === 0 && <p>No doctors available.</p>}
+                {patients.length === 0 && <p>No patients available.</p>}
             </div>
         </>
     );

@@ -1,7 +1,7 @@
 const hre = require("hardhat");
 
 async function main() {
-  const Upload = await hre.ethers.deployContract("HealthInsurance");
+  const Upload = await hre.ethers.deployContract("Fake");
 
   await Upload.waitForDeployment();
 

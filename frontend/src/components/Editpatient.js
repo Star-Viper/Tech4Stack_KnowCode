@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../store/auth';
 import Navbar from './Navbar';
 
-const Setpatient = () => {
+const Editpatient = () => {
     const navigate = useNavigate();
     const { storeTokenInLS } = useAuth();
 
@@ -19,13 +19,14 @@ const Setpatient = () => {
     const [bloodgroup, setBloodGroup] = useState('');
     const [allergies, setAllergies] = useState('');
     const [medication, setMedication] = useState('');
+    const [p_address, setP_Address] = useState('');
     const [report, setReport] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch("http://localhost:8000/setpatient", {
-                method: "post",
+            const response = await fetch("http://localhost:8000/editpatient", {
+                method: "put",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -49,7 +50,7 @@ const Setpatient = () => {
                 // const res_data = await response.json();
                 // console.log("response from server ", res_data);
                 // storeTokenInLS(res_data.token);
-                alert("Profile Stored Successfully");
+                alert("Profile updated Successfully");
                 navigate('/showpatient');
             } else {
                 return alert("Invalid Credentials!!!");
@@ -97,9 +98,6 @@ const Setpatient = () => {
 
                         <label>Medication:</label>
                         <input type="text" value={medication} onChange={(e) => setMedication(e.target.value)} />
-
-                        <label>Report:</label>
-                        <input type="text" value={report} onChange={(e) => setReport(e.target.value)} />
 
                         <button type='submit'>Set Patient Details</button>
                     </form>
@@ -162,4 +160,4 @@ const Setpatient = () => {
     );
 };
 
-export default Setpatient;
+export default Editpatient;

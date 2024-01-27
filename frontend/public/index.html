@@ -31,6 +31,7 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+   
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -42,6 +43,14 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    window.embeddedChatbotConfig = {
+      chatbotId: "N3r2KrzbYvsk9jE3U9dUQ",
+      domain: "www.chatbase.co"
+    }
+  </script>
+  <script src="https://www.chatbase.co/embed.min.js" chatbotId="N3r2KrzbYvsk9jE3U9dUQ" domain="www.chatbase.co" defer>
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script>
