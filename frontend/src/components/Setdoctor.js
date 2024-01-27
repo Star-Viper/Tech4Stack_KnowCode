@@ -20,7 +20,7 @@ const Setdoctor = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch("http://localhost:8000/setdoctor", {
+            const response = await fetch("https://healthtrace.onrender.com/setdoctor", {
                 method: "post",
                 headers: {
                     "Content-Type": "application/json",

@@ -6,7 +6,7 @@ const ShowDoctor = () => {
 
     const getDoctors = async () => {
         try {
-            const response = await fetch("http://localhost:8000/getdoctor", {
+            const response = await fetch("https://healthtrace.onrender.com/getdoctor", {
                 method: "GET",
                 headers: {
                     Accept: "application/json",

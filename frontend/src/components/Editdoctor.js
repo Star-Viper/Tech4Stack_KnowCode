@@ -20,7 +20,7 @@ const Editdoctor = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch("http://localhost:8000/editdoctor", {
+            const response = await fetch("https://healthtrace.onrender.com/editdoctor", {
                 method: "put",
                 headers: {
                     "Content-Type": "application/json",
