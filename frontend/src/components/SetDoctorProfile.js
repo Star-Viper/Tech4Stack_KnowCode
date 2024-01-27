@@ -26,12 +26,11 @@ const SetDoctorProfile = () => {
         e.preventDefault();
 
         try {
-            const tx = await contract1.setDoctor(license, name, phone, gender, dob, qualification, major);
-            await tx.wait();
+            // const tx = await contract1.setDoctor(license, name, phone, gender, dob, qualification, major);
+            // await tx.wait();
             const dcount = await contract1.getDoctorCount();
             await dcount.wait();
             window.alert("Doctor count:", dcount);
-            console.log("TX: ", tx);
             // alert("Doctor Profile set Successfully!!!");
         } catch (error) {
             if (error.code === 4001) {
