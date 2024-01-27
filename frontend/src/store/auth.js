@@ -5,6 +5,10 @@ import abi1 from '../Lock.json';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+
+    const [user, setUser] = useState("");
+    const [token, setToken] = useState(localStorage.getItem("token"));
+
     const [state, setState] = useState({
         provider: null,
         signer: null,
@@ -57,8 +61,40 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    const storeTokenInLS = (serverToken) => {
+        setToken(serverToken);
+        return localStorage.setItem("token", serverToken);
+    };
+
+    const userAuthentication = async () => {
+        try {
+            const response = await fetch("http://localhost:8000/user", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+
+                if (data.msg) {
+                    setUser(data.msg);
+
+
+                } else {
+                    console.error("Unexpected API response format:", data);
+                }
+            } else {
+                console.error("Server returned an error:", response.status, response.statusText);
+            }
+        } catch (error) {
+            console.error("Error during user authentication:", error);
+        }
+    };
+
     return (
-        <AuthContext.Provider value={{ address, state, connectWallet, isloggedin, setIsloggedIn }}>
+        <AuthContext.Provider value={{ address, state, connectWallet, isloggedin, setIsloggedIn, storeTokenInLS, user, token, address, }}>
             {children}
         </AuthContext.Provider>
     );

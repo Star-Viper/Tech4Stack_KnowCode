@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
-const User = require("../models/User");
+const Patients = require('../models/Patients');
+const Doctors = require('../models/Doctors');
+const Appointments = require('../models/Appointment');
 
 const authMiddleware = async (req, res, next) => {
     const token = req.header('Authorization');
