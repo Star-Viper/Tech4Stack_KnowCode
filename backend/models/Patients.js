@@ -45,6 +45,7 @@ const patientSchema = new Schema({
     address: {
         type: String,
         required: true,
+        // unique: true,
     },
     report: {
         type: String,

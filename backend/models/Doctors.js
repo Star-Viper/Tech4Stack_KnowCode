@@ -22,7 +22,7 @@ const doctorSchema = new Schema({
         type: String,
         required: true,
     },
-    qualfication: {
+    qualification: {
         type: String,
         required: true,
     },
