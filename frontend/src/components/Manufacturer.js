@@ -93,8 +93,7 @@ export default function Manufacturer() {
 
         const ImgHash = data.IpfsHash;
         console.log(ImgHash);
-        const transaction = await contract.uploadProduct(prdName, prdName, batchNo, ImgHash);
-        
+        const transaction = await contract.uploadProduct(prdName, prdName, batchNo, ImgHash);        
         await transaction.wait();
         alert("Product Added Successfully");
         setProductID(generateUniqueID());
