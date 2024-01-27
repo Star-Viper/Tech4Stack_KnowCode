@@ -21,38 +21,43 @@ const patientSchema = new Schema({
     height: {
         type: Number,
         required: true,
-    }, 
+    },
     weight: {
         type: Number,
         required: true,
-    }, 
+    },
     houseaddr: {
         type: String,
         required: true,
-    }, 
+    },
     bloodgroup: {
         type: String,
         required: true,
-    }, 
+    },
     allergies: {
         type: String,
         required: true,
-    }, 
+    },
     medication: {
         type: String,
         required: true,
-    }, 
+    },
     address: {
         type: String,
         required: true,
-    }, 
+    },
     report: {
         type: String,
         required: true,
-    }, 
-    date: {
-        type: Date.now(),
     },
+    date: {
+        type: Date,
+        default: Date.now,  
+    },
+    permission: [{
+        type: Schema.Types.ObjectId,
+        ref: 'doctors',
+    }],
 });
 
 const Patients = mongoose.model("Patients", patientSchema);

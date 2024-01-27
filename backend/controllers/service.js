@@ -1,7 +1,7 @@
 require('dotenv').config()
 const Patients = require('../models/Patients');
 const Doctors = require('../models/Doctors');
-const Appointments = require('../models/Appointments');
+const Appointments = require('../models/Appointment');
 
 exports.setpatients = async (req, res)=> {
     const { name, phone, gender, dob, height, weight, houseaddr, bloodgroup, allergies, medication, addr, report } = req.body;

@@ -39,8 +39,13 @@ const doctorSchema = new Schema({
         required: true,
     },
     date: {
-        type: Date.now(),
+        type: Date,
+        default: Date.now,
     },
+    permissions: [{
+        type: Schema.Types.ObjectId,
+        ref: 'patients'
+    }]
 });
 
 const Doctors = mongoose.model("Doctors", doctorSchema);

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const appointmentSchema = new Schema({
-    address_patient: {
+    address_doctor: {
         type: String,
         required: true,
     },
@@ -11,7 +11,8 @@ const appointmentSchema = new Schema({
         required: true,
     },
     date: {
-        type: Date.now(),
+        type: Date,
+        default: Date.now(),
     },
     prescription: {
         type: String,
@@ -28,14 +29,16 @@ const appointmentSchema = new Schema({
     status: {
         type: String,
         required: true,
-        enum: ['pending','completed']
+        default: 'pending',
+        enum: ['pending', 'completed'],
     },
     major: {
         type: String,
         required: true,
     },
     creationDate: {
-        type: Date.now(),
+        type: Date,
+        default: Date.now,
         required: true,
     },
 });
